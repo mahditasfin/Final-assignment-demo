@@ -1,6 +1,4 @@
-# Project Title
-
-Starter Application for Final Assignment
+# Final Assignment Demo
 
 ## Table of Contents
 
