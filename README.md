@@ -13,6 +13,10 @@ This is a template app for the students to get started with their final assignme
 
 # Installation
 
+### Using git clone the repository
+
+`git clone https://github.com/mahditasfin/Final-assignment-demo`
+
 ### Update the database credentials in the index.js file ~
 `username, password, database-name`
 
