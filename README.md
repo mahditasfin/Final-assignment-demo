@@ -11,7 +11,7 @@ Starter Application for Final Assignment
 
 ## Description
 
-This is a template app for the students to get started for their final assignment
+This is a template app for the students to get started with their final assignment
 
 # Installation
 
