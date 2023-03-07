@@ -18,7 +18,7 @@ This is a template app for the students to get started with their final assignme
 `git clone https://github.com/mahditasfin/Final-assignment-demo.git`
 
 ### Update the database credentials in the index.js file ~
-`username, password, database-name`
+`username, password, database-name` along with the clustername and other relevant credentials
 
 ### Install the node modules ~
 `npm install`
