@@ -1,56 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Search</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body style="background-color: limegreen;">
-  <div class="container">
-    <h1 style="text-align: center;">Movie Search</h1>
-    <div class="search-container">
-      <form action="/search" method="GET">
-        <input type="text" name="query" placeholder="Search...">
-        <select name="filter">
-          <option value="title">Title</option>
-          <option value="runtime">Runtime</option>
-          <option value="year">Year</option>
-          <option value="rating">Rating</option>
-          <option value="type">Type</option>
-        </select>
-        <select name="category">
-          <option value="">All categories</option>
-          <option value="Action">Action</option>
-          <option value="Comedy">Comedy</option>
-          <option value="Drama">Drama</option>
-          <option value="Horror">Horror</option>
-        </select>
-        <button type="submit">Search</button>
-      </form>
-    </div>
-    <div class="results-container">
-      <% movies.forEach(movie => { %>
-        <div class="card">
-          <h2><%= movie.title %></h2>
-          <p><%= movie.plot %></p>
-          <% if (movie.cast && Array.isArray(movie.cast)) { %>
-            <p><strong>Cast:</strong> <%= movie.cast.join(', ') %></p>
-          <% } %>
-          <p><strong>Year:</strong> <%= movie.year %></p>
-          <p><strong>Type:</strong> <%= movie.type %></p>
-        </div>
-      <% }); %>
-    </div>
-    <div class="pagination">
-      <% if (typeof hasPreviousPage !== 'undefined' && hasPreviousPage) { %>
-        <a href="/search?query=<%= query %>&filter=<%= filter %>&category=<%= category %>&page=<%= previousPage %>">&laquo; Previous</a>
-      <% } %>
+<!-- index.ejs -->
 
-      <% if (typeof hasNextPage !== 'undefined' && hasNextPage) { %>
-        <a href="/search?query=<%= query %>&filter=<%= filter %>&category=<%= category %>&page=<%= nextPage %>">Next &raquo;</a>
-      <% } %>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Movies</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+  <h1>Movies</h1> <!-- Heading for the page -->
+  <% movies.forEach((movie) => { %> <!-- Loop through the list of movies -->
+    <h2><%= movie.title %></h2> <!-- Movie title -->
+    <p><%= movie.plot %></p> <!-- Movie plot summary -->
+    <ul>
+      <% movie.genres.forEach((genre) => { %> <!-- Loop through the movie's genres -->
+        <li><%= genre %></li> <!-- Display each genre in a list item -->
+      <% }) %>
+    </ul>
+    <p>Runtime: <%= movie.runtime %> minutes</p> <!-- Movie runtime in minutes -->
+    <p>Rated: <%= movie.rated %></p> <!-- Movie rating -->
+    <% if (movie.released) { %> <!-- Check if the movie's release date is defined -->
+      <p>Released: <%= movie.released.toDateString() %></p> <!-- Movie release date -->
+    <% } %>
+    <p>Countries: <%= movie.countries.join(', ') %></p> <!-- List of countries where the movie was produced -->
+  <% }) %>
 </body>
 </html>

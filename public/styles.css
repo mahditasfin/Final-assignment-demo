@@ -1,79 +1,33 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  h1 {
-    font-size: 48px;
-    margin-top: 0;
-    animation: move 2s ease-in-out infinite alternate;
-  }
-  
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(20px);
-    }
-  }
-  
-  
-  .search-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  input[type="text"], select {
-    height: 40px;
-    padding: 5px;
-    font-size: 20px;
-    margin-right: 10px;
-  }
-  
-  button[type="submit"] {
-    height: 40px;
-    font-size: 20px;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .results-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .card {
-    width: 300px;
-    margin: 20px;
-    padding: 20px;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  }
-  
-  .card h2 {
-    font-size: 24px;
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .card strong {
-    font-weight: bold;
-  }
+/* Define body styles */
+body {
+  background-color: #b9a3a3; /* Set the background color to a light brown */
+  font-family: Arial, sans-serif; /* Use the Arial or sans-serif font family */
+  font-size: 16px; /* Set the font size to 16 pixels */
+}
+
+/* Define heading styles */
+h1, h2 {
+  color: #333; /* Set the color of the headings to dark gray */
+}
+
+h2 {
+  font-size: 24px; /* Set the font size of the second-level headings to 24 pixels */
+}
+
+/* Define paragraph styles */
+p {
+  margin: 0 0 10px; /* Add margin to the bottom of paragraphs */
+}
+
+/* Define unordered list styles */
+ul {
+  list-style: none; /* Remove the default bullet points from unordered lists */
+  padding: 0; /* Remove padding from the unordered lists */
+  margin: 0 0 10px; /* Add margin to the bottom of unordered lists */
+}
+
+/* Define list item styles */
+li {
+  display: inline-block; /* Display list items as inline-block elements */
+  margin-right: 10px; /* Add right margin to list items */
+}
