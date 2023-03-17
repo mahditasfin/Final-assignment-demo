@@ -9,7 +9,7 @@ app.use(express.static('public'));
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://<username>:<password>@search-data.dfadfasd.mongodb.net/<database-name>?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://rocket:MaNbUktrSrISAWg5@search-data.xez1jx2.mongodb.net/movie-data?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB connected');
   })
@@ -17,19 +17,68 @@ mongoose.connect('mongodb+srv://<username>:<password>@search-data.dfadfasd.mongo
     console.error(err);
   });
 
+
+  // mongoose.connect('url', { useNewUrlParser: true, useUnifiedTopology: true })
+  // .then(() => {
+  //   console.log('MongoDB connected');
+  // })
+  // .catch((err) => {
+  //   console.error(err);
+  // });
 // Route to render the movies EJS template
 app.get('/', (req, res) => {
   // Find movies with a runtime greater than 120 minutes, limit to 10 documents
-  Sample.find({ runtime: { $gt: 120 } })
+  let query = { runtime: 120 }
+  
+  Sample.find(query)
   .limit(10)
-  .then((movies) => {
-    res.render('index',{movies:movies});
-    console.log(movies)
+  .then((returnedMovies) => {
+    res.render('index',{movies:returnedMovies});
+
   })
   .catch((err) => {
     console.log(err);
   });
 });
+
+app.get('/search', async (req, res) => {
+  console.log(req.query)
+  const { query, filter, category} = req.query;
+  let queryObject = {}
+  if(query){
+    if (filter === "runtime"){
+      console.log("runtime query")
+      queryObject = {runtime:query}
+    }else if(filter === "title"){
+      queryObject = {title: {$regex: new RegExp(query, 'i')}}; 
+    }
+  }
+  
+  //res.send(query, filter, category)
+  console.log(queryObject)
+  Sample.find(queryObject)
+  .limit(5)
+  .then((returnedMovies) => {
+    res.render("index", {movies:returnedMovies})
+    //console.log(returnedMovies)
+    //res.render('index',{movies:returnedMovies});
+  })
+})
+
+
+
+// app.get('/', (req, res) => {
+//   // Find movies with a runtime greater than 120 minutes, limit to 10 documents
+//   Sample.find()
+//   .then((movies) => {
+//     res.render('index',{movies:movies});
+//     console.log(movies)
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+// });
+
 
 // Start the server
 const PORT = process.env.PORT || 5000;
