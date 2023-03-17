@@ -9,7 +9,7 @@ app.use(express.static('public'));
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://rocket:MaNbUktrSrISAWg5@search-data.xez1jx2.mongodb.net/movie-data?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://user:password@database.node.mongodb.net/movie-data?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDB connected');
   })
